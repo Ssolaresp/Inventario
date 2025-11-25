@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Productos\Tables;
+namespace App\Filament\Resources\Almacenes\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class ProductosTable
+class AlmacenesTable
 {
     public static function configure(Table $table): Table
     {
@@ -20,32 +20,35 @@ class ProductosTable
                     ->label('Nombre')
                     ->searchable()
                     ->sortable(),
-                
-                TextColumn::make('categoria.nombre')
-                    ->label('Categoría')
+                TextColumn::make('encargado')
+                    ->label('Encargado')
                     ->searchable()
                     ->sortable(),
-                
-                TextColumn::make('unidadMedida.nombre')
-                    ->label('Unidad de Medida')
-                    ->searchable()
-                    ->sortable(),
-                
-                TextColumn::make('unidadMedida.abreviatura')
-                    ->label('Abreviatura')
+                TextColumn::make('telefono')
+                    ->label('Teléfono')
                     ->searchable(),
-                
-                TextColumn::make('proveedor.nombre')
-                    ->label('Proveedor')
+                TextColumn::make('direccion')
+                    ->label('Dirección')
+                    ->searchable()
+                    ->limit(50),
+                TextColumn::make('municipio.nombre')
+                    ->label('Municipio')
                     ->searchable()
                     ->sortable(),
-                
+                TextColumn::make('departamento.nombre')
+                    ->label('Departamento')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('estado.nombre')
+                    ->label('Estado')
+                    ->badge()
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Fecha de Creación')
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                
                 TextColumn::make('updated_at')
                     ->label('Última Actualización')
                     ->dateTime('d/m/Y H:i')
@@ -53,21 +56,19 @@ class ProductosTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('categoria')
-                    ->relationship('categoria', 'nombre')
-                    ->label('Categoría')
+                SelectFilter::make('departamento')
+                    ->relationship('departamento', 'nombre')
+                    ->label('Departamento')
                     ->searchable()
                     ->preload(),
-                
-                SelectFilter::make('unidadMedida')
-                    ->relationship('unidadMedida', 'nombre')
-                    ->label('Unidad de Medida')
+                SelectFilter::make('municipio')
+                    ->relationship('municipio', 'nombre')
+                    ->label('Municipio')
                     ->searchable()
                     ->preload(),
-                
-                SelectFilter::make('proveedor')
-                    ->relationship('proveedor', 'nombre')
-                    ->label('Proveedor')
+                SelectFilter::make('estado')
+                    ->relationship('estado', 'nombre')
+                    ->label('Estado')
                     ->searchable()
                     ->preload(),
             ])

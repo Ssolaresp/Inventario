@@ -18,7 +18,7 @@ class ProveedorResource extends Resource
 {
     protected static ?string $model = Proveedor::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTruck;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
 
     protected static ?string $recordTitleAttribute = 'nombre';
 
@@ -27,14 +27,6 @@ class ProveedorResource extends Resource
     protected static ?string $modelLabel = 'Proveedor';
 
     protected static ?string $pluralModelLabel = 'Proveedores';
-    /*
-    // AGREGA ESTA LÍNEA si tienes múltiples paneles
-    protected static ?string $navigationGroup = 'Gestión';
-    
-    */
-    
-    // AGREGA ESTA LÍNEA para ordenar en el menú
-    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {

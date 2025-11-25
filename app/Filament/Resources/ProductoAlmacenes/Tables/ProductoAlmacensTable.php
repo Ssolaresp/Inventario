@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Productos\Tables;
+namespace App\Filament\Resources\ProductoAlmacenes\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,35 +10,46 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class ProductosTable
+class ProductoAlmacenesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('nombre')
-                    ->label('Nombre')
+                TextColumn::make('producto.nombre')
+                    ->label('Producto')
                     ->searchable()
                     ->sortable(),
                 
-                TextColumn::make('categoria.nombre')
-                    ->label('Categoría')
+                TextColumn::make('almacen.nombre')
+                    ->label('Almacén')
                     ->searchable()
                     ->sortable(),
                 
-                TextColumn::make('unidadMedida.nombre')
-                    ->label('Unidad de Medida')
-                    ->searchable()
+                TextColumn::make('stock_inicial')
+                    ->label('Stock Inicial')
+                    ->numeric()
                     ->sortable(),
                 
-                TextColumn::make('unidadMedida.abreviatura')
-                    ->label('Abreviatura')
-                    ->searchable(),
+                TextColumn::make('stock_minimo')
+                    ->label('Stock Mínimo')
+                    ->numeric()
+                    ->sortable()
+                    ->badge()
+                    ->color('warning'),
                 
-                TextColumn::make('proveedor.nombre')
-                    ->label('Proveedor')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('stock_maximo')
+                    ->label('Stock Máximo')
+                    ->numeric()
+                    ->sortable()
+                    ->badge()
+                    ->color('success'),
+                
+                TextColumn::make('fecha_vencimiento')
+                    ->label('Fecha de Vencimiento')
+                    ->date('d/m/Y')
+                    ->sortable()
+                    ->placeholder('Sin vencimiento'),
                 
                 TextColumn::make('created_at')
                     ->label('Fecha de Creación')
@@ -53,21 +64,15 @@ class ProductosTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('categoria')
-                    ->relationship('categoria', 'nombre')
-                    ->label('Categoría')
+                SelectFilter::make('producto')
+                    ->relationship('producto', 'nombre')
+                    ->label('Producto')
                     ->searchable()
                     ->preload(),
                 
-                SelectFilter::make('unidadMedida')
-                    ->relationship('unidadMedida', 'nombre')
-                    ->label('Unidad de Medida')
-                    ->searchable()
-                    ->preload(),
-                
-                SelectFilter::make('proveedor')
-                    ->relationship('proveedor', 'nombre')
-                    ->label('Proveedor')
+                SelectFilter::make('almacen')
+                    ->relationship('almacen', 'nombre')
+                    ->label('Almacén')
                     ->searchable()
                     ->preload(),
             ])

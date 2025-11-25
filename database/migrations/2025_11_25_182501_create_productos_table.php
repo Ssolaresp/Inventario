@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->foreignId('unidad_medida_id')->constrained('unidad_medidas')->onDelete('cascade');
+            $table->foreignId('proveedor_id')->nullable()->constrained('proveedores')->onDelete('cascade');
             $table->timestamps();
         });
     }

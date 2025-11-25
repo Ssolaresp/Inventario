@@ -11,6 +11,7 @@ class Producto extends Model
         'nombre',
         'categoria_id',
         'unidad_medida_id',
+        'proveedor_id',
     ];
 
     public function categoria(): BelongsTo
@@ -21,5 +22,10 @@ class Producto extends Model
     public function unidadMedida(): BelongsTo
     {
         return $this->belongsTo(UnidadMedida::class);
+    }
+
+    public function proveedor(): BelongsTo
+    {
+        return $this->belongsTo(Proveedor::class);
     }
 }

@@ -15,7 +15,8 @@ class ProductoForm
                 TextInput::make('nombre')
                     ->label('Nombre del Producto')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 
                 Select::make('categoria_id')
                     ->label('Categoría')
@@ -43,6 +44,22 @@ class ProductoForm
                             ->maxLength(255),
                         TextInput::make('abreviatura')
                             ->label('Abreviatura')
+                            ->required()
+                            ->maxLength(255),
+                    ]),
+                
+                Select::make('proveedor_id')
+                    ->label('Proveedor')
+                    ->relationship('proveedor', 'nombre')
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm([
+                        TextInput::make('nombre')
+                            ->label('Nombre del Proveedor')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('nit')
+                            ->label('NIT')
                             ->required()
                             ->maxLength(255),
                     ]),

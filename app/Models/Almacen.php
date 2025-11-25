@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Proveedor extends Model
+class Almacen extends Model
 {
-        protected $table = 'proveedores';
-        
+    protected $table = 'almacenes';
+    
     protected $fillable = [
         'nombre',
-        'nit',
-        'telefono',
-        'correo',
         'direccion',
+        'telefono',
+        'encargado',
         'municipio_id',
         'departamento_id',
         'estado_id',
