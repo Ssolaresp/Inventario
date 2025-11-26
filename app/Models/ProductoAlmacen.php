@@ -31,4 +31,13 @@ class ProductoAlmacen extends Model
     {
         return $this->belongsTo(Almacen::class);
     }
+
+
+// Calcular stock actual
+    public function getStockActualAttribute()
+    {
+        // Aquí puedes agregar lógica para calcular entradas y salidas
+        return $this->stock_inicial;
+    }
+
 }
