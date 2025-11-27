@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('motivo_salida_id')->constrained('motivos_salida')->onDelete('restrict');
             $table->date('fecha_salida');
             $table->text('observaciones')->nullable();
-            $table->enum('estado', ['pendiente', 'completada', 'anulada'])->default('pendiente');
+            $table->enum('estado', ['Pendiente', 'Procesada', 'Cancelada'])->default('pendiente');
             $table->foreignId('usuario_id')->constrained('users')->onDelete('restrict');
             $table->timestamps();
         });

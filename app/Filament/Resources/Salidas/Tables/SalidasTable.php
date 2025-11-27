@@ -3,7 +3,9 @@
 namespace App\Filament\Resources\Salidas\Tables;
 
 use Filament\Actions\BulkActionGroup;
+/*
 use Filament\Actions\DeleteAction;
+*/
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -49,16 +51,15 @@ class SalidasTable
                 BadgeColumn::make('estado')
                     ->label('Estado')
                     ->colors([
-                        'warning' => 'pendiente',
-                        'success' => 'procesada',
-                        'danger' => 'cancelada',
+                        'warning' => 'Pendiente',
+                        'success' => 'Procesada',
+                        'danger' => 'Cancelada',
                     ])
                     ->icons([
-                        'heroicon-o-clock' => 'pendiente',
-                        'heroicon-o-check-circle' => 'procesada',
-                        'heroicon-o-x-circle' => 'cancelada',
-                    ])
-                    ->formatStateUsing(fn (string $state): string => ucfirst($state)),
+                        'heroicon-o-clock' => 'Pendiente',
+                        'heroicon-o-check-circle' => 'Procesada',
+                        'heroicon-o-x-circle' => 'Cancelada',
+                    ]),
 
                 TextColumn::make('detalles_count')
                     ->label('Productos')
@@ -97,9 +98,9 @@ class SalidasTable
                 SelectFilter::make('estado')
                     ->label('Estado')
                     ->options([
-                        'pendiente' => 'Pendiente',
-                        'procesada' => 'Procesada',
-                        'cancelada' => 'Cancelada',
+                        'Pendiente' => 'Pendiente',
+                        'Procesada' => 'Procesada',
+                        'Cancelada' => 'Cancelada',
                     ]),
 
                 Filter::make('fecha_salida')
@@ -124,7 +125,9 @@ class SalidasTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                /*
                 DeleteAction::make(),
+                */
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

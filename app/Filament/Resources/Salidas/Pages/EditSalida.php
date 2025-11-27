@@ -27,12 +27,12 @@ class EditSalida extends EditRecord
         $estadoNuevo = $data['estado'];
 
         // Si cambió de PENDIENTE a PROCESADA → Descontar inventario
-        if ($estadoAnterior === 'pendiente' && $estadoNuevo === 'procesada') {
+        if ($estadoAnterior === 'Pendiente' && $estadoNuevo === 'Procesada') {
             $this->procesarSalida();
         }
 
         // Si cambió de PROCESADA a CANCELADA → Devolver inventario
-        if ($estadoAnterior === 'procesada' && $estadoNuevo === 'cancelada') {
+        if ($estadoAnterior === 'Procesada' && $estadoNuevo === 'Cancelada') {
             $this->devolverInventario();
         }
 

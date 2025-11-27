@@ -13,8 +13,7 @@ return new class extends Migration
             $table->foreignId('salida_id')->constrained('salidas')->onDelete('cascade');
             $table->foreignId('producto_id')->constrained('productos')->onDelete('restrict');
             $table->integer('cantidad');
-            $table->decimal('precio_unitario', 10, 2)->nullable();
-            $table->decimal('subtotal', 10, 2)->nullable();
+     
             $table->text('observaciones')->nullable();
             $table->timestamps();
         });

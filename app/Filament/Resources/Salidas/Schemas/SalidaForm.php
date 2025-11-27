@@ -28,7 +28,7 @@ class SalidaForm
                     ->searchable()
                     ->preload(),
 
-                Select::make('motivo_salida_id') // CAMBIAR A SINGULAR
+                Select::make('motivo_salida_id')
                     ->label('Motivo de Salida')
                     ->relationship('motivoSalida', 'nombre')
                     ->required()
@@ -45,9 +45,9 @@ class SalidaForm
                 Select::make('estado')
                     ->label('Estado')
                     ->options([
-                        'pendiente' => 'Pendiente',
-                        'procesada' => 'Procesada',
-                        'cancelada' => 'Cancelada',
+                        'Pendiente' => 'Pendiente',
+                        'Procesada' => 'Procesada',
+                        'Cancelada' => 'Cancelada',
                     ])
                     ->default('pendiente')
                     ->required(),
