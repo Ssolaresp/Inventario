@@ -9,25 +9,18 @@ class DetalleSalida extends Model
 {
     use HasFactory;
 
+    protected $table = 'detalle_salidas';
+
     protected $fillable = [
         'salida_id',
         'producto_id',
         'cantidad',
-        'precio_unitario',
-        'subtotal',
-        'observaciones'
+        'observaciones',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($detalle) {
-            if ($detalle->precio_unitario && $detalle->cantidad) {
-                $detalle->subtotal = $detalle->precio_unitario * $detalle->cantidad;
-            }
-        });
-    }
+    protected $casts = [
+        'cantidad' => 'decimal:2',
+    ];
 
     public function salida()
     {

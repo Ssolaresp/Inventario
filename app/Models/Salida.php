@@ -12,7 +12,7 @@ class Salida extends Model
     protected $fillable = [
         'numero_salida',
         'almacen_id',
-        'motivo_salida_id',
+        'motivo_salida_id', // CAMBIAR A SINGULAR
         'fecha_salida',
         'observaciones',
         'estado',
@@ -31,6 +31,10 @@ class Salida extends Model
             if (empty($salida->numero_salida)) {
                 $salida->numero_salida = 'SAL-' . date('Ymd') . '-' . str_pad(static::whereDate('created_at', today())->count() + 1, 4, '0', STR_PAD_LEFT);
             }
+            
+            if (empty($salida->usuario_id)) {
+                $salida->usuario_id = auth()->id();
+            }
         });
     }
 
@@ -41,7 +45,7 @@ class Salida extends Model
 
     public function motivoSalida()
     {
-        return $this->belongsTo(MotivoSalida::class);
+        return $this->belongsTo(MotivoSalida::class, 'motivo_salida_id'); // CAMBIAR A SINGULAR
     }
 
     public function detalles()
