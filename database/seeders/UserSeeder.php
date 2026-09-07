@@ -10,13 +10,24 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'Administrador',
-            'email' => 'admin@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('Umg$2025'),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $usuarios = [
+            ['name' => 'Administrador', 'email' => 'admin@example.com', 'rol' => 'Administrador'],
+            ['name' => 'Operador', 'email' => 'operador@example.com', 'rol' => 'Operador'],
+            ['name' => 'Consultor', 'email' => 'consultor@example.com', 'rol' => 'Consultor'],
+        ];
+
+        foreach ($usuarios as $u) {
+            $rolId = DB::table('roles')->where('nombre', $u['rol'])->value('id');
+
+            DB::table('users')->insert([
+                'name' => $u['name'],
+                'email' => $u['email'],
+                'email_verified_at' => now(),
+                'password' => Hash::make('Umg$2025'),
+                'rol_id' => $rolId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }
