@@ -10,13 +10,19 @@ use App\Filament\Resources\Entradas\Schemas\EntradaForm;
 use App\Filament\Resources\Entradas\Tables\EntradasTable;
 use App\Filament\Resources\Entradas\RelationManagers\DetallesRelationManager;
 use App\Models\Entrada;
+use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class EntradaResource extends Resource
 {
     protected static ?string $model = Entrada::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowDownTray;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Movimientos';
 
     protected static ?string $navigationLabel = 'Entradas';
 
@@ -46,9 +52,7 @@ class EntradaResource extends Resource
         return [
             'index' => ListEntradas::route('/'),
             'create' => CreateEntrada::route('/create'),
-            
             'view' => ViewEntrada::route('/{record}'),
-            
             'edit' => EditEntrada::route('/{record}/edit'),
         ];
     }

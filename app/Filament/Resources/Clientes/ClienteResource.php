@@ -18,7 +18,9 @@ class ClienteResource extends Resource
 {
     protected static ?string $model = Cliente::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Ventas';
 
     protected static ?string $recordTitleAttribute = 'nombre';
 

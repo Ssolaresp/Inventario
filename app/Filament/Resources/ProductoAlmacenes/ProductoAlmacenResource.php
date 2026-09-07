@@ -8,15 +8,19 @@ use App\Filament\Resources\ProductoAlmacenes\Pages\ListProductoAlmacenes;
 use App\Filament\Resources\ProductoAlmacenes\Schemas\ProductoAlmacenForm;
 use App\Filament\Resources\ProductoAlmacenes\Tables\ProductoAlmacenesTable;
 use App\Models\ProductoAlmacen;
+use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class ProductoAlmacenResource extends Resource
 {
     protected static ?string $model = ProductoAlmacen::class;
 
-    
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArchiveBox;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Inventario';
 
     protected static ?string $navigationLabel = 'Inventario';
 

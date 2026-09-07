@@ -18,7 +18,9 @@ class ProveedorResource extends Resource
 {
     protected static ?string $model = Proveedor::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTruck;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Compras';
 
     protected static ?string $recordTitleAttribute = 'nombre';
 

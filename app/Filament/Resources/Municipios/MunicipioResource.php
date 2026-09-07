@@ -18,7 +18,9 @@ class MunicipioResource extends Resource
 {
     protected static ?string $model = Municipio::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMapPin;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuración';
 
     protected static ?string $recordTitleAttribute = 'nombre';
 

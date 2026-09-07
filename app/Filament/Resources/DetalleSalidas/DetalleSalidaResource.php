@@ -18,7 +18,11 @@ class DetalleSalidaResource extends Resource
 {
     protected static ?string $model = DetalleSalida::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedListBullet;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Movimientos';
+
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $recordTitleAttribute = 'Detalle Salida';
 

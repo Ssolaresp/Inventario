@@ -18,7 +18,9 @@ class UnidadMedidaResource extends Resource
 {
     protected static ?string $model = UnidadMedida::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedScale;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuración';
 
     protected static ?string $recordTitleAttribute = 'Unidad de medida';
 

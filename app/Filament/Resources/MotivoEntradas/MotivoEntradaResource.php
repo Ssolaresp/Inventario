@@ -18,7 +18,9 @@ class MotivoEntradaResource extends Resource
 {
     protected static ?string $model = MotivoEntrada::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuración';
 
     protected static ?string $recordTitleAttribute = 'M.E';
 

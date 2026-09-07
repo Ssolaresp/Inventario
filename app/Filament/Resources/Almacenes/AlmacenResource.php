@@ -8,13 +8,19 @@ use App\Filament\Resources\Almacenes\Pages\ListAlmacenes;
 use App\Filament\Resources\Almacenes\Schemas\AlmacenForm;
 use App\Filament\Resources\Almacenes\Tables\AlmacenesTable;
 use App\Models\Almacen;
+use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class AlmacenResource extends Resource
 {
     protected static ?string $model = Almacen::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingStorefront;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Inventario';
 
     protected static ?string $recordTitleAttribute = 'nombre';
 

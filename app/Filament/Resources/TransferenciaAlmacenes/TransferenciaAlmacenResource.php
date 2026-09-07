@@ -8,15 +8,19 @@ use App\Filament\Resources\TransferenciaAlmacenes\Pages\ListTransferenciaAlmacen
 use App\Filament\Resources\TransferenciaAlmacenes\Schemas\TransferenciaAlmacenForm;
 use App\Filament\Resources\TransferenciaAlmacenes\Tables\TransferenciaAlmacenesTable;
 use App\Models\TransferenciaAlmacen;
+use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class TransferenciaAlmacenResource extends Resource
 {
     protected static ?string $model = TransferenciaAlmacen::class;
 
-  
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowsRightLeft;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Inventario';
 
     protected static ?string $navigationLabel = 'Transferencias';
 

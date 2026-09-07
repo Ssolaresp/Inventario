@@ -14,7 +14,9 @@ class EstadoResource extends Resource
 {
     protected static ?string $model = Estado::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCheckCircle;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuración';
 
     protected static ?string $recordTitleAttribute = 'nombre';
 
